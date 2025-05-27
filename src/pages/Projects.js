@@ -14,7 +14,7 @@ const Projects = ({ isVisible }) => {
       live: "https://github.com/tarikvelic/ai-product-recommendations",
       status: "Active",
       year: "2024",
-      icon: "🤖",
+      icon: "/python.jpeg",
       type: "AI/ML Projects"
     },
     {
@@ -25,7 +25,7 @@ const Projects = ({ isVisible }) => {
       live: "https://apps.shopify.com/post-purchase-offers-carthook",
       status: "Active",
       year: "2024",
-      icon: "🛒",
+      icon: "/carthook.webp",
       type: "Shopify Apps"
     },
     {
@@ -36,7 +36,7 @@ const Projects = ({ isVisible }) => {
       live: "https://apps.shopify.com/sky-pilot",
       status: "Active", 
       year: "2024",
-      icon: "✈️",
+      icon: "/skypilot.webp",
       type: "Shopify Apps"
     },
     {
@@ -47,7 +47,7 @@ const Projects = ({ isVisible }) => {
       live: "https://apps.shopify.com/releasit-cod-order-form",
       status: "Active",
       year: "2024", 
-      icon: "📋",
+      icon: "/releasitcod.webp",
       type: "Shopify Apps"
     },
     {
@@ -58,7 +58,7 @@ const Projects = ({ isVisible }) => {
       live: "https://apps.shopify.com/cash-on-delivery-fee",
       status: "Active",
       year: "2024",
-      icon: "💰",
+      icon: "/releasitform.webp",
       type: "Shopify Apps"
     }
   ];
@@ -75,7 +75,7 @@ const Projects = ({ isVisible }) => {
         <div className={`transition-all duration-1000 ${isVisible?.projects ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
           <SectionTitle 
             title="Projects" 
-            subtitle="Showcasing innovative Shopify applications that serve thousands of merchants worldwide and generate millions in additional revenue"
+            subtitle="Showcasing innovative full-stack applications and software solutions that serve thousands of users worldwide across various industries"
           />
           
           {/* Project Filters */}
@@ -96,7 +96,7 @@ const Projects = ({ isVisible }) => {
           </div>
           
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-stretch">
             {filteredProjects.map((project, index) => (
               <ProjectCard key={index} {...project} />
             ))}

@@ -47,7 +47,7 @@ section[id] {
   }
 }
 
-/* Custom animations for ProgressBar */
+/* Optimized animations - keeping only essential ones */
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
@@ -61,27 +61,96 @@ section[id] {
   animation: shimmer 2s infinite;
 }
 
-.bg-stripes {
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255, 255, 255, 0.1) 10px,
-    rgba(255, 255, 255, 0.1) 20px
-  );
-}
-
-@keyframes gradient-x {
+/* Simple float animation */
+@keyframes float {
   0%, 100% {
-    background-size: 200% 200%;
-    background-position: left center;
+    transform: translateY(0px);
   }
   50% {
-    background-size: 200% 200%;
-    background-position: right center;
+    transform: translateY(-10px);
   }
 }
 
-.animate-gradient-x {
-  animation: gradient-x 3s ease infinite;
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Simple pulse effect */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Slide in from bottom - simplified */
+@keyframes slideInBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-bottom {
+  animation: slideInBottom 0.6s ease-out;
+}
+
+/* Scale in animation - simplified */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+/* Fade in with delay - simplified */
+@keyframes fadeInDelay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-delay {
+  animation: fadeInDelay 0.8s ease-out;
+}
+
+/* Optimized transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-bounce {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Performance optimizations */
+* {
+  will-change: auto;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }

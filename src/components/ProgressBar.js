@@ -1,21 +1,54 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { motion } from 'framer-motion';
 
 const ProgressBar = ({ 
+  skill, 
   percentage, 
-  label, 
-  color = 'red', 
-  size = 'medium',
-  showPercentage = true,
-  animated = true,
-  gradient = true,
-  glowing = false,
-  striped = false,
-  duration = 2000,
-  delay = 0
+  icon, 
+  description, 
+  color = 'red',
+  delay = 0 
 }) => {
-  const [currentPercentage, setCurrentPercentage] = useState(0);
+  const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef();
+  const [isHovered, setIsHovered] = useState(false);
+  const progressRef = useRef(null);
+
+  // Memoize color schemes
+  const colorSchemes = useMemo(() => ({
+    red: {
+      gradient: 'from-red-500 to-red-600',
+      bg: 'bg-red-500/20',
+      text: 'text-red-400',
+      glow: 'shadow-red-500/30'
+    },
+    blue: {
+      gradient: 'from-blue-500 to-blue-600',
+      bg: 'bg-blue-500/20',
+      text: 'text-blue-400',
+      glow: 'shadow-blue-500/30'
+    },
+    green: {
+      gradient: 'from-green-500 to-green-600',
+      bg: 'bg-green-500/20',
+      text: 'text-green-400',
+      glow: 'shadow-green-500/30'
+    },
+    purple: {
+      gradient: 'from-purple-500 to-purple-600',
+      bg: 'bg-purple-500/20',
+      text: 'text-purple-400',
+      glow: 'shadow-purple-500/30'
+    },
+    pink: {
+      gradient: 'from-pink-500 to-pink-600',
+      bg: 'bg-pink-500/20',
+      text: 'text-pink-400',
+      glow: 'shadow-pink-500/30'
+    }
+  }), []);
+
+  const currentScheme = colorSchemes[color] || colorSchemes.red;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,123 +60,125 @@ const ProgressBar = ({
       { threshold: 0.1 }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (progressRef.current) {
+      observer.observe(progressRef.current);
     }
 
     return () => observer.disconnect();
   }, []);
 
+  // Simplified progress animation
   useEffect(() => {
-    if (isVisible && animated) {
+    if (isVisible) {
       const timer = setTimeout(() => {
-        let startTime;
-        const animate = (currentTime) => {
-          if (!startTime) startTime = currentTime;
-          const progress = Math.min((currentTime - startTime) / duration, 1);
-          setCurrentPercentage(Math.floor(progress * percentage));
+        let start = 0;
+        const duration = 1500;
+        const startTime = Date.now();
+        
+        const animate = () => {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Simple easing
+          const easeOut = 1 - Math.pow(1 - progress, 2);
+          setProgress(easeOut * percentage);
+          
           if (progress < 1) {
             requestAnimationFrame(animate);
           }
         };
+        
         requestAnimationFrame(animate);
       }, delay);
-      
+
       return () => clearTimeout(timer);
-    } else if (!animated) {
-      setCurrentPercentage(percentage);
     }
-  }, [isVisible, percentage, animated, duration, delay]);
-
-  const colorClasses = {
-    red: {
-      bg: 'from-red-500 to-red-600',
-      text: 'text-red-400',
-      glow: 'shadow-red-500/50',
-      border: 'border-red-500/30'
-    },
-    blue: {
-      bg: 'from-blue-500 to-blue-600',
-      text: 'text-blue-400',
-      glow: 'shadow-blue-500/50',
-      border: 'border-blue-500/30'
-    },
-    green: {
-      bg: 'from-green-500 to-green-600',
-      text: 'text-green-400',
-      glow: 'shadow-green-500/50',
-      border: 'border-green-500/30'
-    },
-    purple: {
-      bg: 'from-purple-500 to-purple-600',
-      text: 'text-purple-400',
-      glow: 'shadow-purple-500/50',
-      border: 'border-purple-500/30'
-    },
-    orange: {
-      bg: 'from-orange-500 to-orange-600',
-      text: 'text-orange-400',
-      glow: 'shadow-orange-500/50',
-      border: 'border-orange-500/30'
-    },
-    cyan: {
-      bg: 'from-cyan-500 to-cyan-600',
-      text: 'text-cyan-400',
-      glow: 'shadow-cyan-500/50',
-      border: 'border-cyan-500/30'
-    }
-  };
-
-  const sizeClasses = {
-    small: 'h-2',
-    medium: 'h-4',
-    large: 'h-6',
-    xl: 'h-8'
-  };
-
-  const currentColor = colorClasses[color] || colorClasses.red;
+  }, [isVisible, percentage, delay]);
 
   return (
-    <div ref={ref} className="w-full">
-      {label && (
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-gray-300 font-semibold text-sm md:text-base lg:text-lg">
-            {label}
-          </span>
-          {showPercentage && (
-            <span className={`font-bold text-sm md:text-base lg:text-lg ${currentColor.text}`}>
-              {currentPercentage}%
-            </span>
-          )}
-        </div>
-      )}
+    <motion.div
+      ref={progressRef}
+      className="group relative"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: delay * 0.1 }}
+      viewport={{ once: true }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Simplified glow effect */}
+      <div className={`absolute -inset-2 bg-gradient-to-r ${currentScheme.gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500`}></div>
       
-      <div className={`w-full bg-gray-800/60 backdrop-blur-xl rounded-full overflow-hidden border ${currentColor.border} ${sizeClasses[size]}`}>
-        <div 
-          className={`
-            ${sizeClasses[size]} 
-            rounded-full 
-            transition-all 
-            duration-1000 
-            ease-out
-            ${gradient ? `bg-gradient-to-r ${currentColor.bg}` : `bg-${color}-500`}
-            ${glowing ? `shadow-lg ${currentColor.glow}` : ''}
-            ${striped ? 'bg-stripes' : ''}
-            relative
-            overflow-hidden
-          `}
-          style={{ width: `${currentPercentage}%` }}
-        >
-          {striped && (
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-          )}
+      <div className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-xl rounded-2xl p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-500 shadow-lg">
+        
+        {/* Header */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-gray-700/50 to-gray-600/50 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+              <span className="text-lg">{icon}</span>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-white group-hover:text-gray-100 transition-colors duration-300">
+                {skill}
+              </h3>
+              {description && (
+                <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
+                  {description}
+                </p>
+              )}
+            </div>
+          </div>
           
-          {animated && (
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+          {/* Percentage */}
+          <div className={`text-2xl font-black bg-gradient-to-r ${currentScheme.gradient} bg-clip-text text-transparent`}>
+            {Math.round(progress)}%
+          </div>
+        </div>
+
+        {/* Progress Bar Container */}
+        <div className="relative">
+          {/* Background bar */}
+          <div className="w-full h-3 bg-gray-800/60 rounded-full overflow-hidden backdrop-blur-sm border border-gray-700/30">
+            {/* Progress fill */}
+            <motion.div
+              className={`h-full bg-gradient-to-r ${currentScheme.gradient} rounded-full relative overflow-hidden`}
+              style={{ width: `${progress}%` }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Simplified shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-full group-hover:translate-x-[-200%] transition-transform duration-1000"></div>
+              
+              {/* Progress indicator dot */}
+              {progress > 5 && (
+                <div className="absolute right-1 top-1/2 transform -translate-y-1/2 w-2 h-2 bg-white rounded-full shadow-lg"></div>
+              )}
+            </motion.div>
+          </div>
+
+          {/* Simplified particle effects for high percentages */}
+          {percentage >= 80 && isHovered && (
+            <div className="absolute inset-0 pointer-events-none">
+              {[...Array(3)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className={`absolute w-1 h-1 ${currentScheme.bg} rounded-full`}
+                  animate={{
+                    x: [Math.random() * 100, Math.random() * 100],
+                    y: [Math.random() * 20, Math.random() * 20],
+                    opacity: [0, 1, 0]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    delay: i * 0.3
+                  }}
+                />
+              ))}
+            </div>
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -141,8 +141,8 @@ const About = ({ isVisible }) => {
       company: "ShopCircle / HulkApps",
       period: "Jan 2023 - Present • 2+ years",
       location: "Sarajevo, Bosnia and Herzegovina • Full-time · On-site",
-      description: "Leading full-stack development for multiple Shopify applications including Releasit, CartHook, and Sky Pilot. Developing and maintaining scalable e-commerce solutions that serve thousands of merchants worldwide. Additionally working part-time as an AI Engineer, implementing machine learning solutions and AI-powered features to enhance user experience and business intelligence.",
-      technologies: ["React.js", "TypeScript", "Node.js", "Remix.js", "MySQL", "Amazon Web Services (AWS)", "Shopify API", "GraphQL", "JavaScript", "Python", "TensorFlow", "AI/ML"],
+      description: "Leading full-stack development for multiple web applications and software solutions. Developing and maintaining scalable applications that serve thousands of users worldwide. Working with modern technologies including React, Node.js, TypeScript, and cloud platforms. Additionally working part-time as an AI Engineer, implementing machine learning solutions and AI-powered features to enhance user experience and business intelligence.",
+      technologies: ["React.js", "TypeScript", "Node.js", "Remix.js", "MySQL", "Amazon Web Services (AWS)", "GraphQL", "JavaScript", "Python", "TensorFlow", "AI/ML", "Shopify API"],
       isActive: true,
       projectImage: "/shopcircle.png"
     },
@@ -185,98 +185,166 @@ const About = ({ isVisible }) => {
                     e.target.style.display = 'none';
                   }}
                 />
-                Full-Stack Developer & Shopify Expert
+                Full-Stack Software Developer
               </h3>
+
+              {/* Personal Information */}
+              <div className="mb-8 md:mb-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                  <div className="bg-gradient-to-r from-red-500/10 to-purple-500/10 backdrop-blur-xl rounded-2xl p-4 border border-red-500/20">
+                    <div className="text-red-400 text-sm font-semibold mb-1">Age</div>
+                    <div className="text-white text-lg font-bold">25 years old</div>
+                  </div>
+                  <div className="bg-gradient-to-r from-red-500/10 to-purple-500/10 backdrop-blur-xl rounded-2xl p-4 border border-red-500/20">
+                    <div className="text-red-400 text-sm font-semibold mb-1">Born in</div>
+                    <div className="text-white text-lg font-bold">Sarajevo, BiH</div>
+                  </div>
+                  <div className="bg-gradient-to-r from-red-500/10 to-purple-500/10 backdrop-blur-xl rounded-2xl p-4 border border-red-500/20">
+                    <div className="text-red-400 text-sm font-semibold mb-1">Specialization</div>
+                    <div className="text-white text-lg font-bold">Full-Stack Developer</div>
+                  </div>
+                </div>
+              </div>
+
               <p className="text-gray-300 text-xl md:text-2xl leading-relaxed mb-6 md:mb-8">
-                Passionate Shopify developer with 3+ years of experience building scalable e-commerce applications and solutions that serve thousands of users worldwide.
+                Passionate full-stack software developer with 3+ years of experience building scalable web applications and solutions across various industries and technologies.
               </p>
               <p className="text-gray-300 text-xl md:text-2xl leading-relaxed mb-6 md:mb-8">
-                Specialized in creating high-performance Shopify applications that help merchants increase revenue and streamline their operations. Experienced in leading frontend teams and mentoring junior developers.
+                Specialized in modern web technologies including React, Node.js, and cloud platforms. Experienced in e-commerce, fintech, and enterprise applications with a focus on performance and user experience.
               </p>
               <p className="text-gray-300 text-xl md:text-2xl leading-relaxed mb-8 md:mb-10">
-                Currently working as a Full Stack Developer at Shop Circle, contributing to innovative e-commerce solutions and continuously expanding my technical expertise.
+                Currently working as a Full Stack Developer at Shop Circle, where I contribute to innovative software solutions and continuously expand my technical expertise across the full development stack.
               </p>
               
               {/* Mini Stats */}
               <div className="grid grid-cols-3 gap-4 md:gap-8 mb-10 md:mb-12">
-                <StatsCounter end={4} suffix="+" description="Shopify Apps" />
-                <StatsCounter end={3} suffix="+" description="Years" />
-                <StatsCounter end={10} suffix="k+" description="Merchants Served" />
+                <StatsCounter end={3} suffix="+" description="Years Experience" />
+                <StatsCounter end={15} suffix="+" description="Projects Built" />
+                <StatsCounter end={10} suffix="k+" description="Users Served" />
               </div>
               
               {/* Technical Skills */}
               <div className="mb-10 md:mb-12">
-                <h4 className="text-white font-bold mb-6 text-xl md:text-2xl">Technical Expertise</h4>
-                <div className="space-y-6">
+                <h4 className="text-white font-bold mb-10 text-xl md:text-2xl flex items-center gap-3">
+                  <span className="text-2xl">🚀</span>
+                  Technical Expertise
+                </h4>
+                <div className="space-y-12">
                   <ProgressBar 
-                    percentage={99} 
+                    percentage={95} 
                     label="Frontend Development" 
+                    description="React, TypeScript, Next.js, Vue.js, Tailwind CSS"
                     color="red" 
                     size="large" 
                     glowing={true}
                     animated={true}
-                    duration={2500}
+                    duration={250}
+                    icon="⚛️"
                   />
                   <ProgressBar 
-                    percentage={95} 
-                    label="Shopify Development" 
-                    color="green" 
-                    size="large" 
-                    glowing={true}
-                    animated={true}
-                    duration={2500}
-                    delay={200}
-                  />
-                  <ProgressBar 
-                    percentage={90} 
+                    percentage={92} 
                     label="Backend Development" 
+                    description="Node.js, Express, Remix, Python, REST APIs, GraphQL"
                     color="blue" 
                     size="large" 
                     glowing={true}
                     animated={true}
-                    duration={2500}
-                    delay={400}
+                    duration={250}
+                    delay={20}
+                    icon="⚙️"
                   />
                   <ProgressBar 
                     percentage={88} 
                     label="Database Design" 
+                    description="MySQL, PostgreSQL, MongoDB, Redis, Database Architecture"
                     color="purple" 
                     size="large" 
                     glowing={true}
                     animated={true}
-                    duration={2500}
-                    delay={600}
+                    duration={250}
+                    delay={40}
+                    icon="🗄️"
                   />
                   <ProgressBar 
                     percentage={85} 
-                    label="Cloud Architecture" 
+                    label="Cloud & DevOps" 
+                    description="AWS, Docker, CI/CD, Serverless, Infrastructure"
                     color="orange" 
                     size="large" 
                     glowing={true}
                     animated={true}
-                    duration={2500}
-                    delay={800}
+                    duration={250}
+                    delay={60}
+                    icon="☁️"
                   />
                   <ProgressBar 
-                    percentage={50} 
-                    label="AI Engineering" 
+                    percentage={82} 
+                    label="E-commerce Development" 
+                    description="Shopify Apps, Payment Systems, E-commerce Solutions"
+                    color="green" 
+                    size="large" 
+                    glowing={true}
+                    animated={true}
+                    duration={250}
+                    delay={80}
+                    icon="🛍️"
+                  />
+                  <ProgressBar 
+                    percentage={75} 
+                    label="AI & Machine Learning" 
+                    description="Python, TensorFlow, Machine Learning, Data Analysis"
                     color="cyan" 
                     size="large" 
                     glowing={true}
                     animated={true}
-                    duration={2500}
-                    delay={1000}
+                    duration={250}
+                    delay={100}
+                    icon="🤖"
                   />
-                  <ProgressBar 
-                    percentage={92} 
-                    label="Team Leadership" 
-                    color="pink" 
-                    size="large" 
-                    glowing={true}
-                    animated={true}
-                    duration={2500}
-                    delay={1200}
-                  />
+                </div>
+              </div>
+
+              {/* Education Section */}
+              <div className="mb-10 md:mb-12">
+                <h4 className="text-white font-bold mb-8 text-xl md:text-2xl flex items-center gap-3">
+                  <span className="text-2xl">🎓</span>
+                  Education
+                </h4>
+                <div className="relative group">
+                  <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
+                  <div className="relative bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-blue-500/30 hover:border-blue-400/60 transition-all duration-500">
+                    <div className="flex items-start gap-6">
+                      <div className="flex-shrink-0">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+                          🏛️
+                        </div>
+                      </div>
+                      <div className="flex-grow">
+                        <h5 className="text-xl md:text-2xl font-bold text-white mb-2">Bachelor of Computer Science</h5>
+                        <div className="text-blue-400 font-bold text-lg mb-2">University of PIM</div>
+                        <div className="text-gray-400 text-sm mb-4">Banja Luka, Bosnia and Herzegovina • 4 Years (240ETCS)</div>
+                        <p className="text-gray-300 text-base leading-relaxed mb-4">
+                          Completed comprehensive 4-year Computer Science program with focus on software engineering, 
+                          algorithms, data structures, and modern programming paradigms. Gained strong foundation in 
+                          theoretical computer science and practical software development.
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 rounded-lg text-sm border border-blue-500/30 backdrop-blur-sm">
+                            Software Engineering
+                          </span>
+                          <span className="px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 rounded-lg text-sm border border-blue-500/30 backdrop-blur-sm">
+                            Algorithms & Data Structures
+                          </span>
+                          <span className="px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 rounded-lg text-sm border border-blue-500/30 backdrop-blur-sm">
+                            Database Systems
+                          </span>
+                          <span className="px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 rounded-lg text-sm border border-blue-500/30 backdrop-blur-sm">
+                            Web Development
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
@@ -352,12 +420,12 @@ const About = ({ isVisible }) => {
                       <div className="text-gray-300 font-semibold text-sm md:text-base">Years Experience</div>
                     </div>
                     <div className="group">
-                      <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">3</div>
-                      <div className="text-gray-300 font-semibold text-sm md:text-base">Major Shopify Apps</div>
+                      <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">15+</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Projects Delivered</div>
                     </div>
                     <div className="group">
-                      <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">Lead</div>
-                      <div className="text-gray-300 font-semibold text-sm md:text-base">Frontend Leadership</div>
+                      <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">Full-Stack</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Development Focus</div>
                     </div>
                   </div>
                 </div>
@@ -369,23 +437,23 @@ const About = ({ isVisible }) => {
               <div className="relative group">
                 <div className="absolute -inset-2 bg-gradient-to-r from-red-600 via-purple-600 to-red-600 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-1000"></div>
                 <div className="relative bg-gradient-to-r from-red-500/20 via-purple-500/20 to-red-500/20 backdrop-blur-xl rounded-3xl p-6 md:p-8 border border-red-500/30 max-w-6xl mx-auto">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Project Impact</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-8">Technical Impact</h3>
                   <div className="grid md:grid-cols-4 gap-6 md:gap-8 text-center">
                     <div className="group">
                       <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">10k+</div>
-                      <div className="text-gray-300 font-semibold text-sm md:text-base">Merchants Served</div>
-                    </div>
-                    <div className="group">
-                      <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">$3M+</div>
-                      <div className="text-gray-300 font-semibold text-sm md:text-base">Revenue Generated</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Users Served</div>
                     </div>
                     <div className="group">
                       <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">99.9%</div>
-                      <div className="text-gray-300 font-semibold text-sm md:text-base">Uptime</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Uptime Achieved</div>
                     </div>
                     <div className="group">
-                      <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">3</div>
-                      <div className="text-gray-300 font-semibold text-sm md:text-base">Major Platforms</div>
+                      <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">Multiple</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Tech Stacks</div>
+                    </div>
+                    <div className="group">
+                      <div className="text-3xl md:text-4xl font-black text-red-400 mb-2 group-hover:scale-110 transition-transform duration-300">Scalable</div>
+                      <div className="text-gray-300 font-semibold text-sm md:text-base">Solutions Built</div>
                     </div>
                   </div>
                 </div>
