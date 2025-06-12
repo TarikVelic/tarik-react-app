@@ -30,7 +30,7 @@ const QuickStats = () => {
     },
     {
       icon: FaTrophy,
-      number: "CTO",
+      number: "Frontend lead",
       label: "Leadership Role",
       color: "text-yellow-500",
       bgColor: "from-yellow-500/20 to-yellow-600/20",

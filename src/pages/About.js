@@ -127,8 +127,8 @@ const About = ({ isVisible }) => {
   const handleDownloadCV = () => {
     // Create a link element and trigger download
     const link = document.createElement('a');
-    link.href = '/tarik-velic-cv.pdf'; // Path to your CV file in public folder
-    link.download = 'Tarik_Velic_CV.pdf';
+    link.href = '/tarikcv.pdf'; // Correct path to your CV file in public folder
+    link.download = 'tarik-velic-cv.pdf'; // Desired filename when downloaded
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
@@ -242,7 +242,7 @@ const About = ({ isVisible }) => {
                     icon="⚛️"
                   />
                   <ProgressBar 
-                    percentage={92} 
+                    percentage={86} 
                     label="Backend Development" 
                     description="Node.js, Express, Remix, Python, REST APIs, GraphQL"
                     color="blue" 
@@ -266,7 +266,7 @@ const About = ({ isVisible }) => {
                     icon="🗄️"
                   />
                   <ProgressBar 
-                    percentage={85} 
+                    percentage={60} 
                     label="Cloud & DevOps" 
                     description="AWS, Docker, CI/CD, Serverless, Infrastructure"
                     color="orange" 
@@ -290,7 +290,7 @@ const About = ({ isVisible }) => {
                     icon="🛍️"
                   />
                   <ProgressBar 
-                    percentage={75} 
+                    percentage={30} 
                     label="AI & Machine Learning" 
                     description="Python, TensorFlow, Machine Learning, Data Analysis"
                     color="cyan" 
