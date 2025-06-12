@@ -223,15 +223,7 @@ const Home = ({ isLoading }) => {
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-red-700 to-red-800 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </motion.a>
-          <motion.a 
-            href="#contact"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-10 py-5 border-2 border-red-500 text-red-400 rounded-2xl font-black text-xl hover:bg-red-500 hover:text-white transition-all duration-500 flex items-center justify-center"
-          >
-            <MessageCircle className="mr-2 w-5 h-5" />
-            Get In Touch
-          </motion.a>
+ 
         </motion.div>
         
         {/* Quick Stats */}
